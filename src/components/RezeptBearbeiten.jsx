@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 export default function RezeptBearbeiten({list, onSubmitEditedRecipe}){
 
     const [toEdit, setToEdit] = useState({});
+
     const [rezeptId, setRezeptId] = useState("");
     const [rezeptName, setRezeptName] = useState("");
     const [beschreibung, setBeschreibung] = useState("");
@@ -13,29 +14,40 @@ export default function RezeptBearbeiten({list, onSubmitEditedRecipe}){
 
 
     function editRezept(e, rezept){
-        e.preventDefault();
+        // e.preventDefault();
         console.log("ausgew r ", rezept)
         setToEdit(rezept)
+        // setRezeptId(toEdit.id);
+
+
     }
 
     function onEditRecipe(e){
-        e.preventDefault();
-        onSubmitEditedRecipe({rezeptId, rezeptName, beschreibung, zutaten, zubereitung, kategorie})
-
+        // e.preventDefault();
+        // setRezeptId(toEdit.id);
         setRezeptId(toEdit.id);
+        onSubmitEditedRecipe(e, rezeptId, rezeptName, beschreibung, zutaten, zubereitung, kategorie)
+
+
         setRezeptName("");
         setBeschreibung("");
         setZutaten("")
         setZubereitung("");
         setKategorie("");
-        console.log("new values ", rezeptId, rezeptName, beschreibung, zutaten, zubereitung, kategorie);
+        setRezeptId("");
+        // console.log("new values ", rezeptId, rezeptName, beschreibung, zutaten, zubereitung, kategorie);
 
     }
 
     useEffect(() =>{
         console.log("to edit ", toEdit)
+        setRezeptId(toEdit.id);
     }, [toEdit])
 
+    useEffect(() =>{
+
+        console.log("id curr value ", rezeptId);
+    })
     return(
         <>
         <h2>Rezept bearbeiten</h2>
@@ -59,10 +71,16 @@ export default function RezeptBearbeiten({list, onSubmitEditedRecipe}){
             </div>
         </div>
             <hr></hr>
-            <h2>Rezept Anlegen</h2>
-            <h3>{toEdit.name}</h3>
+            <h2>{toEdit.name} Bearbeiten</h2>
+            <h3></h3>
             <div>
                 <form onSubmit={onEditRecipe}>
+                    id: <input
+                    type="text"
+                    name={"rezept-id"}
+                    value={rezeptId}
+                    readOnly={true}
+                    required/><br></br>
                     Name: <input
                     type="text"
                     name={"rezept-name"}

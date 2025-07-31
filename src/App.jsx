@@ -31,11 +31,11 @@ function App() {
         testData.push(testRezept);
     }
 
-
     const [rezept, setRezept] = useState({})
     const [rezeptArray, setRezeptArray] = useState(testData);
 
     function handleSubmitRecipe(e){
+        e.preventDefault();
         const randomId = crypto.randomUUID();
         // console.log(randomId, e.rezeptName);
         const newRezept ={
@@ -56,15 +56,31 @@ function App() {
         ])
 
     }
+    function handleUpdateRecipe(e, rezeptId, rezeptName, beschreibung, zutaten, zubereitung, kategorie){
+        e.preventDefault();
+        // console.log("new name ", e.rezeptName);
+        // console.log("from main app ", rezeptId);
+        const newRezept ={
+            id: rezeptId,
+            name: rezeptName,
+            beschreibung: beschreibung,
+            zutaten: zutaten,
+            zubereitung: zubereitung,
+            kategorie: kategorie
+        }
+        setRezept(newRezept);
+        console.log("id from main ", newRezept.id);
 
-    function handleUpdateRecipe(e){
-
-
-
-
+        let temp = [];
+        for(const rezept of rezeptArray){
+            if(rezept.id !== newRezept.id){
+                temp.push(rezept);
+            }
+        }
+        temp.push(newRezept);
+        // console.log("temp ", temp);
+        setRezeptArray(temp);
     }
-
-
 
     // useEffect used to check if rezept and other values update.
     useEffect(() =>{
