@@ -74,3 +74,12 @@ input{
 li{
   list-style-type: none;
 }
+
+button{
+  margin: 5px;
+}
+
+#category-layout{
+  display: flex;
+  flex-direction: row;
+}

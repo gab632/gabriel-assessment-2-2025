@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-function RezepteAnzeigen({list}){
+function RezepteAnzeigen({list, onSubmitEditedReipe}){
     const [textData, setTextData] = useState("");
 
     return (
@@ -28,8 +28,6 @@ function RezepteAnzeigen({list}){
                     )
                 }
             </ul>
-
-
         </>
 
     )

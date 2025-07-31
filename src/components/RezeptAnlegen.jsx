@@ -68,6 +68,12 @@ function RezeptAnlegen({onSubmitRecipe}){
                     <input type="radio" id="hauptgericht" name="kategorie" value="hauptgericht" onChange={(e) => setKategorie(e.target.value)}/>
                     <label htmlFor="hauptgericht">Hauptgericht</label>
                     <br></br>
+                    <input type="radio" id="imbiss" name="kategorie" value="imbiss" onChange={(e) => setKategorie(e.target.value)}/>
+                    <label htmlFor="imbiss">Imbiss</label>
+                    <br></br>
+                    <input type="radio" id="sonstiges" name="kategorie" value="sonstiges" onChange={(e) => setKategorie(e.target.value)}/>
+                    <label htmlFor="sonstiges">Sonstiges</label>
+                    <br></br>
 
                     <button type="submit">Rezept hinzufügen</button>
                 </form>
