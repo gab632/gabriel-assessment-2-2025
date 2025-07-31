@@ -3,6 +3,7 @@ import { Route, Routes} from "react-router";
 import NavigationBar from "./components/NavigationBar.jsx";
 import {useEffect, useState} from "react";
 import RezeptAnlegen from "./components/RezeptAnlegen.jsx";
+import RezepteAnzeigen from "./components/RezepteAnzeigen.jsx";
 
 function App() {
 
@@ -23,18 +24,9 @@ function App() {
 
         // add the new rezept object to array
         // code as in https://react.dev/learn/updating-arrays-in-state
-        let tempArray = rezeptArray;
-        tempArray.push(rezept);
-        console.log("temp array ", tempArray);
-        setRezeptArray([
+        setRezeptArray(rezeptArray => [
             ...rezeptArray,
-            {
-                id: randomId,
-                name: e.rezeptName,
-                beschreibung: e.beschreibung,
-                zutaten: e.zutaten,
-                kategorie: e.kategorie
-            }
+            newRezept
         ])
 
     }
@@ -59,6 +51,14 @@ function App() {
                 element={<RezeptAnlegen
                     onSubmitRecipe={handleSubmitRecipe}/>}
             />
+            <Route
+                path={"/rezepte-anzeigen"}
+                element={<RezepteAnzeigen
+                    list={rezeptArray}
+                />}
+            />
+
+
 
         </Routes>
     </>
