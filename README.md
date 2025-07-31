@@ -9,3 +9,7 @@ a. object rezept
       string kategorie:
 
 b. array rezeptArray: array of rezept objects.
+
+
+3. The App loads an array of dummy data from App.jsx. 
+   To start with empty fields/array, comment out lines 16 to 32 of App.jsx.  

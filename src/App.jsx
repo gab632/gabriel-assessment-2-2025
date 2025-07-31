@@ -13,23 +13,23 @@ function App() {
     const testData = [];
     const testKategorien =["fruestueck", "dessert", "hauptgericht", "sonstiges", "imbiss"];
 
-    for(let i = 0; i < 10; i++){
-        const randomId = crypto.randomUUID();
-        const name = "test-rezeptz-" + (i+1);
-        const beschreibung = "test-beschreibung-" + (i+1);
-        const zutaten = "zut-1, zut-2, zut-3";
-        const zubereitung = "Schritt 1, Schritt 2, Schritt 3";
-        const kategorie = testKategorien[i % 5];
-        const testRezept ={
-            id: randomId,
-            name: name,
-            beschreibung: beschreibung,
-            zutaten: zutaten,
-            zubereitung: zubereitung,
-            kategorie: kategorie
-        }
-        testData.push(testRezept);
-    }
+    // for(let i = 0; i < 10; i++){
+    //     const randomId = crypto.randomUUID();
+    //     const name = "test-rezeptz-" + (i+1);
+    //     const beschreibung = "test-beschreibung-" + (i+1);
+    //     const zutaten = "zut-1, zut-2, zut-3";
+    //     const zubereitung = "Schritt 1, Schritt 2, Schritt 3";
+    //     const kategorie = testKategorien[i % 5];
+    //     const testRezept ={
+    //         id: randomId,
+    //         name: name,
+    //         beschreibung: beschreibung,
+    //         zutaten: zutaten,
+    //         zubereitung: zubereitung,
+    //         kategorie: kategorie
+    //     }
+    //     testData.push(testRezept);
+    // }
 
     const [rezept, setRezept] = useState({})
     const [rezeptArray, setRezeptArray] = useState(testData);
