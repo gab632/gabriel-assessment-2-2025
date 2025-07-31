@@ -141,7 +141,7 @@ export default function RezeptBearbeiten({list, onSubmitEditedRecipe, onDeleteRe
                 {/*button to delete a rezept objet */}
                 <button
                     type="button"
-                    style={{ marginLeft: "10px", backgroundColor: "red", color: "lightgray" }}
+                    style={{margin: "5px", backgroundColor: "darkred", color: "lightgray" }}
                     value={tempId}
                     onClick={() => setShowModal(true)}
                 >

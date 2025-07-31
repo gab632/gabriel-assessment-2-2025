@@ -35,7 +35,7 @@ function App() {
     const [rezeptArray, setRezeptArray] = useState(testData);
 
     function handleSubmitRecipe(e){
-        e.preventDefault();
+        // e.preventDefault();
         const randomId = crypto.randomUUID();
         // console.log(randomId, e.rezeptName);
         const newRezept ={

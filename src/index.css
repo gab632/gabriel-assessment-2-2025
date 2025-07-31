@@ -79,10 +79,11 @@ button{
   margin: 5px;
 }
 
-#category-layout{
-  display: flex;
-  flex-direction: row;
-}
+/*#category-layout{*/
+/*  !*display: flex;*!*/
+/*  !*flex-direction: row;*!*/
+/*  !*align-items: center;*!*/
+/*}*/
 
 .modal-overlay {
   position: fixed;
