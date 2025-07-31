@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-export default function RezeptBearbeiten({list, onSubmitEditedRecipe}){
+export default function RezeptBearbeiten({list, onSubmitEditedRecipe, onDeleteRecipe}){
 
     const [toEdit, setToEdit] = useState({});
 
@@ -10,8 +10,7 @@ export default function RezeptBearbeiten({list, onSubmitEditedRecipe}){
     const [zutaten, setZutaten] = useState("");
     const [zubereitung, setZubereitung] = useState("");
     const [kategorie, setKategorie] = useState("");
-
-
+    let tempId = "";
 
     function editRezept(e, rezept){
         // e.preventDefault();
@@ -19,15 +18,16 @@ export default function RezeptBearbeiten({list, onSubmitEditedRecipe}){
         setToEdit(rezept)
         // setRezeptId(toEdit.id);
 
-
     }
 
     function onEditRecipe(e){
         // e.preventDefault();
         // setRezeptId(toEdit.id);
-        setRezeptId(toEdit.id);
-        onSubmitEditedRecipe(e, rezeptId, rezeptName, beschreibung, zutaten, zubereitung, kategorie)
+        tempId = String();
+        tempId += toEdit.id;
+        setRezeptId(tempId);
 
+        onSubmitEditedRecipe(e, rezeptId, rezeptName, beschreibung, zutaten, zubereitung, kategorie)
 
         setRezeptName("");
         setBeschreibung("");
@@ -35,10 +35,15 @@ export default function RezeptBearbeiten({list, onSubmitEditedRecipe}){
         setZubereitung("");
         setKategorie("");
         setRezeptId("");
+        tempId = "";
         // console.log("new values ", rezeptId, rezeptName, beschreibung, zutaten, zubereitung, kategorie);
-
     }
 
+    // *********************************************
+
+    const [showModal, setShowModal] = useState(false);
+
+    // *********************************************
     useEffect(() =>{
         console.log("to edit ", toEdit)
         setRezeptId(toEdit.id);
@@ -132,7 +137,49 @@ export default function RezeptBearbeiten({list, onSubmitEditedRecipe}){
 
                     <button type="submit">Rezept hinzufügen</button>
                 </form>
+
+                {/*button to delete a rezept objet */}
+                <button
+                    type="button"
+                    style={{ marginLeft: "10px", backgroundColor: "red", color: "lightgray" }}
+                    value={tempId}
+                    onClick={() => setShowModal(true)}
+                >
+                    Rezept löschen
+                </button>
+
             </div>
+
+
+
+            <div className={`modal-overlay ${showModal ? 'active' : ''}`}>
+                <div className="modal">
+                    <h3>Rezept Löschen?</h3>
+                    <p>{toEdit.name}</p>
+                    <button
+                        onClick={() => {
+                            if (typeof onDeleteRecipe === "function") {
+                                onDeleteRecipe(toEdit.id);
+                            }
+                            setShowModal(false);
+                            setToEdit({});
+                            setRezeptName("");
+                            setBeschreibung("");
+                            setZutaten("");
+                            setZubereitung("");
+                            setKategorie("");
+                            setRezeptId("");
+                        }}
+                        style={{ backgroundColor: "red", color: "white" }}
+                    >
+                        Ja
+                    </button>
+                    <button onClick={() => setShowModal(false)}>Nein</button>
+                </div>
+                {/*////////////////////////////////////////////////////////////////*/}
+
+            </div>
+
         </>
     )
 

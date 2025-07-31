@@ -80,8 +80,29 @@ function App() {
         temp.push(newRezept);
         // console.log("temp ", temp);
         setRezeptArray(temp);
+        alert(`Bearbeitung: ${newRezept.name} gespeichert!` )
     }
 
+    function handleDeleteRecipe(id){
+        console.log("id ", id)
+        if(typeof id === "undefined" || id === ""){
+            alert("Keine Rezept ausgewählt");
+            return;
+        }
+        let name = "";
+        // console.log("test delete function ", id);
+        let temp = [];
+        for(const rez of rezeptArray){
+            if(rez.id !== id){
+                temp.push(rez);
+            } else {
+                name = rez.name;
+            }
+        }
+        setRezeptArray(temp);
+        alert(`Rezept ${name} gelöscht.`)
+
+    }
     // useEffect used to check if rezept and other values update.
     useEffect(() =>{
         console.log("rez ", rezept);
@@ -118,6 +139,7 @@ function App() {
                 element={<RezeptBearbeiten
                     list={rezeptArray}
                     onSubmitEditedRecipe={handleUpdateRecipe}
+                    onDeleteRecipe={handleDeleteRecipe}
                 />}
             />
             <Route
