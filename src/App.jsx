@@ -118,6 +118,14 @@ function App() {
         <NavigationBar />
         <Routes>
             <Route
+                path={"/"}
+                element={<RezepteAnzeigen
+                    list={rezeptArray}
+                />}
+            >
+
+            </Route>
+            <Route
                 path={"/rezept-anlegen"}
                 element={<RezeptAnlegen
                     onSubmitRecipe={handleSubmitRecipe}/>}
