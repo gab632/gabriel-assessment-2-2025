@@ -1,13 +1,11 @@
-- useful info to use the React webapp.
-- react router used.
-- data model:
-1.	object rezept
+- useful info to use the React webapp. 
+1.react router used. 
+2.data model:
+a. object rezept
       string id:
       string name:
       string beschreibung:
       string zutaten:
       string kategorie:
 
-2.	array rezeptArray: array of rezept objects.
-
-3. 
+b. array rezeptArray: array of rezept objects.
